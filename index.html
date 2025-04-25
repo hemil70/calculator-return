@@ -36,6 +36,14 @@
             border: 1px solid #ccc;
             background-color: #f9f9f9;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
@@ -65,13 +73,18 @@
             var premiumTotal = premium * 100;
             var total = diff + premiumTotal;
             var percentageReturn = (total / (currentPrice * 100)) * 100;
+            var withoutWheelReturn = (premium / currentPrice) * 100;
             
             var resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = `
-                <p>Difference (diff): $${diff.toFixed(2)}</p>
-                <p>Premium: $${premiumTotal.toFixed(2)}</p>
-                <p>Total: $${total.toFixed(2)}</p>
-                <p>Percentage Return: ${percentageReturn.toFixed(2)}%</p>
+                <h3>Calculation Results</h3>
+                <table>
+                    <tr><td>Difference (diff)</td><td>$${diff.toFixed(2)}</td></tr>
+                    <tr><td>Premium Total</td><td>$${premiumTotal.toFixed(2)}</td></tr>
+                    <tr><td>Total Gain</td><td>$${total.toFixed(2)}</td></tr>
+                    <tr><td>Percentage Return (With Wheel)</td><td>${percentageReturn.toFixed(2)}%</td></tr>
+                    <tr><td>Percentage Return (Without Wheel)</td><td>${withoutWheelReturn.toFixed(2)}%</td></tr>
+                </table>
             `;
         }
         
